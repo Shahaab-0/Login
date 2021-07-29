@@ -86,17 +86,17 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    marginLeft: 45,
+    marginLeft: 70,
   },
   input: {
     backgroundColor: 'white',
-    width: '80%',
+    width: '85%',
     borderRadius: 10,
     paddingLeft: 15,
     fontSize: 16,
     padding: 12,
     marginTop: 30,
-    alignSelf: 'center',
+    alignSelf: 'flex-end',
   },
   image: {
     alignSelf: 'center',
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: '#0f974f',
     borderRadius: 10,
-    width: '80%',
-    alignSelf: 'center',
+    width: '85%',
+    alignSelf: 'flex-end',
   },
   otpText: {
     fontSize: 16,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   signUp: {
-    marginLeft: 45,
+    marginLeft: 70,
     marginTop: 15,
     fontSize: 16,
   },
