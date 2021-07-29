@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Text,
   View,
@@ -7,9 +8,11 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUserDetail} from '../store/action/getUserDetail';
+import {useEffect} from 'react';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -43,8 +46,27 @@ const Login = ({navigation}) => {
         console.log(error);
       }
     }
+    const stringData = `AsyncStorage = Email : ${data.email} , Username : ${data.userName}, ID : ${data.id}`;
+    try {
+      await AsyncStorage.setItem('key', JSON.stringify(stringData));
+    } catch (error) {}
+    try {
+      const value = await AsyncStorage.getItem('key');
+      if (value !== null) {
+        alert(value);
+      }
+    } catch (error) {}
     console.log(data);
   };
+
+  // const getData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('key');
+  //     if (value !== null) {
+  //       alert(value);
+  //     }
+  //   } catch (error) {}
+  // };
 
   return (
     <View style={styles.container}>
@@ -68,6 +90,9 @@ const Login = ({navigation}) => {
       <TouchableOpacity style={styles.otp} onPress={onPressLogin}>
         <Text style={styles.otpText}>Login</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity style={styles.otp} onPress={getData}>
+        <Text style={styles.otpText}>Login</Text>
+      </TouchableOpacity> */}
       <View style={styles.row}>
         <Text style={styles.signUp}>Don't have an account?</Text>
         <TouchableOpacity>
