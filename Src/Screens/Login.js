@@ -16,7 +16,6 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const data = useSelector(state => state.userDetail);
-  console.log(data);
 
   const onPressLogin = async () => {
     if (email.length < 1) {
@@ -44,6 +43,7 @@ const Login = ({navigation}) => {
         console.log(error);
       }
     }
+    console.log(data);
   };
 
   return (
