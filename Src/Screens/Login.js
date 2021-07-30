@@ -17,6 +17,7 @@ import {useEffect} from 'react';
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
+  const [async, setAsync] = useState('');
   const [password, setPassword] = useState('');
   const data = useSelector(state => state.userDetail);
 
@@ -46,17 +47,20 @@ const Login = ({navigation}) => {
         console.log(error);
       }
     }
-    const stringData = `AsyncStorage = Email : ${data.email} , Username : ${data.userName}, ID : ${data.id}`;
+    const stringData = `AsyncStorage >> Email : ${data.email} , Username : ${data.userName}, ID : ${data.id}`;
     try {
       await AsyncStorage.setItem('key', JSON.stringify(stringData));
     } catch (error) {}
     try {
       const value = await AsyncStorage.getItem('key');
-      if (value !== null) {
-        alert(value);
+      if (data.email.length > 1) {
+        setAsync(value);
+        console.log(value);
       }
     } catch (error) {}
-    console.log(data);
+    if (data.email.length > 1) {
+      console.log('ReduxStorage >>', data);
+    }
   };
 
   // const getData = async () => {
